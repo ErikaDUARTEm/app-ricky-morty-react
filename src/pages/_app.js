@@ -11,16 +11,22 @@ function App() {
     setcharacteres(characterApi.results);
   }
   return (
-     <div className='App'> 
-      <header className="App-header">
-        <h1 className="title">Rick & Morty</h1>
+      <div className='App'> 
+        <header className="App-header">
+          <h1 className="title">Rick & Morty</h1>
+          {characteres ? (
+            <Characteres characteres={characteres}/>
+          ) : (
+          <>
+            <img src="https://raw.githubusercontent.com/ratasi/rick-morty/master/src/img/rick-morty.png" alt="Rick & Morty" className="img-home"/>
+            <button onClick={reqApi} className='btn-search'>
+            Buscar Personajes
+            </button>
+          </>
+          )}
+          
       </header>
-      <Characteres characteres={characteres}/>
-      <img src="https://raw.githubusercontent.com/ratasi/rick-morty/master/src/img/rick-morty.png" alt="Rick & Morty" className="img-home"/>
-      <button onClick={reqApi} className='btn-search'>
-        Buscar Personajes
-      </button>
-      </div>
+   </div>
   )
   
 }
