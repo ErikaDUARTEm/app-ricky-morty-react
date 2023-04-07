@@ -1,10 +1,15 @@
 
 const Characteres = (props) => {
-     const {characteres} = props;
+     const {characteres, setcharacteres} = props;
+
+     const resetCharacteres = () => {
+        setcharacteres(null)
+     } 
+     
     return (
         <div className="characteres">
-            <h1>Personajes</h1>
-            <span className="back-home">Volver al home</span>
+            <h1 className="perso">Personajes</h1>
+            <span className="back-home" onClick={resetCharacteres}>Volver al home</span>
             <div className="container-characters">
             {characteres.map((character, index)=>(
                 <div className="character-container" key={index}>
@@ -16,7 +21,7 @@ const Characteres = (props) => {
                         <h6>
                             {character.status === "Alive" ? (
                                 <>
-                                    <span className="alive"/>
+                                <span className="alive"/>
                                     Alive
                                 </>
                             ) : (<>
@@ -25,11 +30,11 @@ const Characteres = (props) => {
                             </>)}
                         </h6>
                         <p>
-                        <span className="text-grey">Episodios</span>
+                        <span className="text-grey">Episodios: </span>
                         <span>{character.episode.length}</span>
                         </p>
                         <p>
-                            <span className="text-grey">Especie:</span>
+                            <span className="text-grey">Especie: </span>
                             <span>{character.species}</span>
                         </p>
                     </div>
@@ -37,7 +42,7 @@ const Characteres = (props) => {
             ))}
 
             </div>
-            <span className="back-home">Volver al home</span>
+            <span className="back-home" onClick={resetCharacteres}>Volver al home</span>
         </div>
     );
 }
